@@ -60,7 +60,7 @@ export const Pagination: React.FC<Props> = ({
             )}
             <button disabled={currentPage === pagesCount} onClick={nextHandler}>next</button>
 
-            <select defaultValue={"10"} onChange={(e) => onSelectChangeHandler(e)}
+            <select defaultValue={pageSize} onChange={(e) => onSelectChangeHandler(e)}
                     name="page_size"
                     id="page_size">
                 <option value="5">5</option>
