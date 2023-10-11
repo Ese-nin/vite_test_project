@@ -23,12 +23,14 @@ export const PostsList: React.FC<Props> = ({
 
     const [value, setValue] = useState('')
 
-    const {data, isLoading, isSuccess} = usePosts()
+    const {data, isLoading, isSuccess, error} = usePosts()
 
     const startCount = currentPage * pageSize - pageSize
     const endCount = currentPage * pageSize
 
     if (isLoading) return <Loader/>
+
+    if (error instanceof Error) console.log(error.message)
 
     if (isSuccess) {
 

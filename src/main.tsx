@@ -1,6 +1,5 @@
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
-import * as React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import {StyleSheetManager} from "styled-components";
 import isPropValid from "@emotion/is-prop-valid"
