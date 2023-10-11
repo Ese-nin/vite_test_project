@@ -9,7 +9,7 @@ export const usePosts = () => {
 
 export const usePost = (postId: string) => {
 
-    return useQuery(['post', postId], () => postsAPI.getPostById(postId), {
+    return useQuery<PostType>(['post', postId], () => postsAPI.getPostById(postId), {
         enabled: !!postId,
     })
 }

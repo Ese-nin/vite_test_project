@@ -7,6 +7,7 @@ type Props = {
     pageSize: number
     setPageSize: (size: number) => void
     setCurrentPage: (page: number) => void
+    setValue: (value: string) => void
 }
 
 export const Pagination: React.FC<Props> = ({
@@ -14,7 +15,8 @@ export const Pagination: React.FC<Props> = ({
                                                 currentPage,
                                                 pageSize,
                                                 setPageSize,
-                                                setCurrentPage
+                                                setCurrentPage,
+                                                setValue
                                             }) => {
 
     const pagesCount = Math.ceil(postsCount / pageSize)
@@ -27,6 +29,7 @@ export const Pagination: React.FC<Props> = ({
 
     const onClickHandler = (page: number) => {
         setCurrentPage(page)
+        setValue('')
     }
 
     const onSelectChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -37,10 +40,12 @@ export const Pagination: React.FC<Props> = ({
 
     const prevHandler = () => {
         setCurrentPage(currentPage - 1)
+        setValue('')
     }
 
     const nextHandler = () => {
         setCurrentPage(currentPage + 1)
+        setValue('')
     }
 
     return (
@@ -80,5 +85,4 @@ const Page = styled.button<{ active?: boolean }>`
     border: none;
     padding: 3px;
   `}
-  
 `

@@ -17,7 +17,7 @@ export const PostPreview: React.FC<Props> = ({post}) => {
     }
 
     return (
-        <p>{post.id}: <Btn onClick={onClickHandler}>{post.title}</Btn></p>
+        <p>{post.id}. <Btn onClick={onClickHandler}>{post.title}</Btn></p>
     );
 };
 

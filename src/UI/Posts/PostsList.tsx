@@ -1,4 +1,6 @@
+import {useState} from "react";
 import * as React from 'react';
+import {SearchField} from "../SearchField";
 import {Loader} from "../common/Loader";
 import styled from "styled-components";
 import {usePosts} from "../../API/hooks";
@@ -12,7 +14,14 @@ type Props = {
     setPageSize: (size: number) => void
 }
 
-export const PostsList: React.FC<Props> = ({currentPage, setCurrentPage, pageSize, setPageSize}) => {
+export const PostsList: React.FC<Props> = ({
+                                               currentPage,
+                                               setCurrentPage,
+                                               pageSize,
+                                               setPageSize
+                                           }) => {
+
+    const [value, setValue] = useState('')
 
     const {data, isLoading, isSuccess} = usePosts()
 
@@ -25,15 +34,25 @@ export const PostsList: React.FC<Props> = ({currentPage, setCurrentPage, pageSiz
 
         const piece = data.filter(p => p.id > startCount && p.id <= endCount)
 
+        const pieceWithSearch = value ?
+            piece.filter(p => p.title.includes(value)) :
+            piece
+
+        const resultPosts = pieceWithSearch.length ?
+            pieceWithSearch.map(p => <PostPreview key={p.id} post={p}/>) :
+            <p>Sorry, posts not found. Please, try again with other parameters</p>
+
         return (
             <Wrapper>
                 <h1>Posts</h1>
-                {piece.map(p => <PostPreview key={p.id} post={p}/>)}
+                <SearchField value={value} setValue={setValue}/>
+                {resultPosts}
                 <Pagination postsCount={data.length}
                             currentPage={currentPage}
                             setCurrentPage={setCurrentPage}
                             pageSize={pageSize}
-                            setPageSize={setPageSize}/>
+                            setPageSize={setPageSize}
+                            setValue={setValue}/>
             </Wrapper>
         )
     }
@@ -43,6 +62,6 @@ const Wrapper = styled.div`
   height: 100%;
 
   h1 {
-    margin: 0 auto 15px;
+    margin: 50px auto 15px;
   }
 `
