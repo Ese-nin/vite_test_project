@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import {PATH} from "./bll/Path";
-import {Main} from "./UI/Main";
+import {MainPage} from "./UI/MainPage";
 import styled from "styled-components";
 import {PostsList} from "./UI/Posts/PostsList";
 import {Post} from "./UI/Posts/Post";
@@ -15,7 +15,7 @@ export const App = () => {
         <AppWrapper>
             <BrowserRouter>
                 <Routes>
-                    <Route path={PATH.main} element={<Main/>}/>
+                    <Route path={PATH.main} element={<MainPage/>}/>
                     <Route path={PATH.posts} element={<PostsList currentPage={currentPage}
                                                           setCurrentPage={setCurrentPage}
                                                           pageSize={pageSize}

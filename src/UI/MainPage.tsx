@@ -1,13 +1,13 @@
-import * as React from 'react';
 import {useNavigate} from "react-router-dom";
+import {PATH} from "../bll/Path";
 import {Wrapper} from "./common/Wrapper";
 
-export const Main = () => {
+export const MainPage = () => {
 
     const navigate = useNavigate()
 
     const onClickHandler = () => {
-        navigate('/posts')
+        navigate(PATH.posts)
     }
 
     return (
