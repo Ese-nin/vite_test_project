@@ -1,10 +1,10 @@
+import * as React from "react";
 import {useState} from "react";
-import * as React from 'react';
-import {SearchField} from "../SearchField";
-import {Loader} from "../common/Loader";
-import styled from "styled-components";
+import {Wrapper} from "../common/Wrapper";
 import {usePosts} from "../../API/hooks";
+import {Loader} from "../common/Loader";
 import {Pagination} from "../Pagination";
+import {SearchField} from "../SearchField";
 import {PostPreview} from "./PostPreview";
 
 type Props = {
@@ -59,11 +59,3 @@ export const PostsList: React.FC<Props> = ({
         )
     }
 };
-
-const Wrapper = styled.div`
-  height: 100%;
-
-  h1 {
-    margin: 50px auto 15px;
-  }
-`

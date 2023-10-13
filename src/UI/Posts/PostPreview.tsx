@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import {PostType} from "../../API/postsAPI";
-import {useNavigate} from "react-router-dom";
+import {PATH} from "../../bll/Path";
 
 
 type Props = {
@@ -13,7 +14,7 @@ export const PostPreview: React.FC<Props> = ({post}) => {
     const navigate = useNavigate()
 
     const onClickHandler = () => {
-        navigate(`/post/${post.id}`)
+        navigate(PATH.posts + `/${post.id}`)
     }
 
     return (
@@ -25,7 +26,7 @@ const Btn = styled.button`
   background-color: transparent;
   border: none;
   text-decoration: underline;
-  
+
   &:hover {
     cursor: pointer;
   }

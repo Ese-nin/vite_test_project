@@ -1,5 +1,7 @@
 import {useState} from "react";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {PATH} from "./bll/Path";
+import {Main} from "./UI/Main";
 import styled from "styled-components";
 import {PostsList} from "./UI/Posts/PostsList";
 import {Post} from "./UI/Posts/Post";
@@ -13,12 +15,14 @@ export const App = () => {
         <AppWrapper>
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/"} element={<PostsList currentPage={currentPage}
+                    <Route path={PATH.main} element={<Main/>}/>
+                    <Route path={PATH.posts} element={<PostsList currentPage={currentPage}
                                                           setCurrentPage={setCurrentPage}
                                                           pageSize={pageSize}
                                                           setPageSize={setPageSize}/>}/>
-                    <Route path={"/post/:id"} element={<Post/>}/>
-                    <Route path={"*"} element={<h1>Page not found</h1>}/>
+                    <Route path={PATH.postById} element={<Post/>}/>
+                    <Route path={PATH["404"]} element={<h1>Page not found</h1>}/>
+                    <Route path={"*"} element={<Navigate to={PATH["404"]}/>}/>
                 </Routes>
             </BrowserRouter>
         </AppWrapper>
