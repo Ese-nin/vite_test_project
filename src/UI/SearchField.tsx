@@ -7,7 +7,7 @@ type Props = {
     setValue: (value: string) => void
 }
 
-export const SearchField: React.FC<Props> = ({value, setValue}) => {
+export const SearchField: React.FC<Props> = React.memo(({value, setValue}) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
@@ -23,7 +23,7 @@ export const SearchField: React.FC<Props> = ({value, setValue}) => {
             <button disabled={value === ""} onClick={onClickHandler}>Clear</button>
         </Search>
     );
-};
+});
 
 const Search = styled.div`
   display: flex;
